@@ -49,28 +49,29 @@ function Dashboard({ setPage }) {
     }, []);
 
     return (
-        <div>
+        <div className="bg-white p-8 rounded-xl shadow-lg w-96">
 
-            <h2>Dashboard</h2>
+            <h2 className="text-xl font-bold mb-4">Dashboard</h2>
 
             <input
+                className="border p-2 w-full mb-3 rounded"
                 placeholder="new task"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <button onClick={addTask}>Add</button>
+            <button onClick={addTask} className="bg-indigo-600 text-white w-full py-2 rounded">Add</button>
 
             {tasks.map((t) => (
                 <div key={t._id}>
                     <span>{t.title}</span>
-                    <button onClick={() => deleteTask(t._id)}>
+                    <button onClick={() => deleteTask(t._id)} className="ml-2 bg-red-500 text-white px-2 py-1 rounded">
                         Delete
                     </button>
                 </div>
             ))}
 
             <br />
-            <button onClick={logout}>Logout</button>
+            <button className="bg-red-500 text-white w-full py-2 rounded" onClick={logout}>Logout</button>
 
         </div>
     );

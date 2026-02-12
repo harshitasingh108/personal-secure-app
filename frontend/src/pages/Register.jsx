@@ -21,31 +21,40 @@ function Register({ setPage }) {
 
 
     return (
-        <div>
+        <div className="bg-white shadow-2xl rounded-2xl p-8 w-96">
 
-            <h2>Register Page</h2>
+            <h2 className="text-3xl font-bold text-center mb-2">Register Page</h2>
 
             <input
+                className="border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none p-3 w-full mb-4 rounded-lg"
                 placeholder="username"
                 onChange={(e) => setUsername(e.target.value)}
             />
 
             <input
+                className="border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none p-3 w-full mb-4 rounded-lg"
                 placeholder="email"
                 onChange={(e) => setEmail(e.target.value)}
             />
 
             <input
+                className="border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none p-3 w-full mb-4 rounded-lg"
                 placeholder="password"
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleRegister}>
+            <button onClick={handleRegister} className="bg-indigo-600 text-white w-full py-2 rounded">
                 Register
             </button>
 
-            <p onClick={() => setPage("login")}>
-                Back to Login
+            <p
+                className="text-center text-sm text-gray-600 mt-5 cursor-pointer"
+                onClick={() => setPage("login")}
+            >
+                Already have an account?
+                <span className="text-indigo-600 font-semibold ml-1">
+                    Login
+                </span>
             </p>
 
         </div>
