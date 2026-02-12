@@ -49,3 +49,17 @@ This project was developed as part of a Frontend Developer assignment to demonst
 
 ## 📂 Project Structure
 
+personal-secure-app
+├── backend
+│ ├── config
+│ ├── models
+│ ├── routes
+│ ├── middleware
+│ └── server.js
+│
+└── frontend
+├── src
+│ ├── pages
+│ ├── App.jsx
+│ └── main.jsx
+└── index.html
