@@ -19,7 +19,11 @@ function Dashboard({ setPage }) {
         await axios.post(
             "http://localhost:3000/api/task/add",
             { title },
-            { headers: { Authorization: token } }
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
         );
 
         setTitle("");
@@ -29,7 +33,11 @@ function Dashboard({ setPage }) {
     const deleteTask = async (id) => {
         await axios.delete(
             `http://localhost:3000/api/task/delete/${id}`,
-            { headers: { Authorization: token } }
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
         );
 
         getTasks();
@@ -38,7 +46,11 @@ function Dashboard({ setPage }) {
     const getTasks = async () => {
         const res = await axios.get(
             "http://localhost:3000/api/task/tasks",
-            { headers: { Authorization: token } }
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
         );
 
         setTasks(res.data);
@@ -59,19 +71,31 @@ function Dashboard({ setPage }) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
-            <button onClick={addTask} className="bg-indigo-600 text-white w-full py-2 rounded">Add</button>
 
-            {tasks.map((t) => (
-                <div key={t._id}>
-                    <span>{t.title}</span>
-                    <button onClick={() => deleteTask(t._id)} className="ml-2 bg-red-500 text-white px-2 py-1 rounded">
-                        Delete
-                    </button>
-                </div>
-            ))}
+            <button
+                onClick={addTask}
+                className="bg-indigo-600 text-white w-full py-2 rounded">
+                Add
+            </button>
 
-            <br />
-            <button className="bg-red-500 text-white w-full py-2 rounded" onClick={logout}>Logout</button>
+            <div className="mt-4">
+                {tasks.map((t) => (
+                    <div key={t._id} className="flex justify-between mb-2">
+                        <span>{t.title}</span>
+                        <button
+                            onClick={() => deleteTask(t._id)}
+                            className="bg-red-500 text-white px-2 py-1 rounded">
+                            Delete
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            <button
+                className="bg-gray-600 text-white w-full py-2 mt-4 rounded"
+                onClick={logout}>
+                Logout
+            </button>
 
         </div>
     );

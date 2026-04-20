@@ -13,7 +13,7 @@ router.post("/task", authMiddleware, async (req, res) => {
     await newtask.save();
     res.json(newtask);
 })
-// add
+
 router.post("/add", authMiddleware, async (req, res) => {
     const { title } = req.body;
     const newtask = new Task({
@@ -24,13 +24,13 @@ router.post("/add", authMiddleware, async (req, res) => {
     res.json(newtask);
 })
 
-// get all task
+
 router.get("/tasks", authMiddleware, async (req, res) => {
     const tasks = await Task.find({ userId: req.userId });
     res.json(tasks);
 })
 
-// delete task
+
 router.delete("/delete/:id", authMiddleware, async (req, res) => {
     await Task.findByIdAndDelete(req.params.id);
     res.json({ message: "Task deleted successfully" });

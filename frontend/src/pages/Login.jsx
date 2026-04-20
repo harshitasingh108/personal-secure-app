@@ -15,7 +15,7 @@ function Login({ setPage }) {
             { username, password }
 
         );
-
+        console.log(res.data);
         localStorage.setItem("token", res.data.token);
 
 
@@ -38,6 +38,7 @@ function Login({ setPage }) {
             />
 
             <input
+                type="password"
                 className="border p-2 w-full mb-3 rounded"
                 placeholder="password"
                 onChange={(e) => setPassword(e.target.value)}
